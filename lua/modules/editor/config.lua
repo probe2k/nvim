@@ -75,6 +75,14 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "s", api.node.open.horizontal, opts("Open: Horizontal Split"))
 	vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
 	vim.keymap.set("n", "W", api.tree.collapse_all, opts("Collapse All"))
+
+	vim.api.nvim_set_hl(0, "NvimTreeGitNew",      { bg = "#203d27", fg = "#a6e3a1", blend = 10 })
+	vim.api.nvim_set_hl(0, "NvimTreeGitDirty",    { bg = "#1d3452", fg = "#89b4fa", blend = 10 })
+	vim.api.nvim_set_hl(0, "NvimTreeGitDeleted",  { bg = "#4b1e1e", fg = "#f38ba8", blend = 10 })
+	vim.api.nvim_set_hl(0, "NvimTreeGitRenamed",  { bg = "#3a2d56", fg = "#cba6f7", blend = 10 })
+	vim.api.nvim_set_hl(0, "NvimTreeGitStaged",   { bg = "#203d27", fg = "#94e2d5", blend = 10 })
+	vim.api.nvim_set_hl(0, "NvimTreeGitMerge",    { bg = "#3a2d56", fg = "#fab387", blend = 10 })
+	vim.api.nvim_set_hl(0, "NvimTreeGitIgnored",  { bg = "NONE", fg = "#585b70" })
 end
 
 function config.nvim_tree()
@@ -120,7 +128,7 @@ function config.nvim_tree()
 					file = true,
 					folder = true,
 					folder_arrow = true,
-					git = true,
+					git = false,
 				},
 				glyphs = {
 					default = "󰈚",
@@ -134,16 +142,7 @@ function config.nvim_tree()
 						symlink_open = "",
 						arrow_open = "",
 						arrow_closed = "",
-					},
-					git = {
-						unstaged  = "󱈸",
-						staged    = "✚",
-						unmerged  = "",
-						renamed   = "",
-						untracked = "★",
-						deleted   = "",
-						ignored   = "◌",
-					},
+					}
 				}
 			},
 		},

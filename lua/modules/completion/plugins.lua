@@ -38,7 +38,6 @@ return function(comp)
 
 	comp({
 		"neovim/nvim-lspconfig",
-		dependencies = { { "onsails/lspkind.nvim", lazy = true } },
 		config = conf.nvim_lsp,
 		lazy = true
 	})

@@ -50,6 +50,8 @@ local treesitter_context = function()
 			default = { "class", "function", "method", "for", "while", "if", "switch" }
 		}
 	})
+
+	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#222222", blend = 10 })
 end
 
 return {

@@ -40,7 +40,42 @@ end
 function config.nvim_cmp()
 	local cmp = require("cmp")
 
-	local lspkind = require("lspkind")
+	local source_mapping = {
+		nvim_lsp = "[LSP]",
+		nvim_lua = "[LUA]",
+		luasnip = "[SNIP]",
+		buffer = "[BUF]",
+		path = "[PATH]",
+		treesitter = "[TREE]"
+	}
+
+	local cmp_kinds = {
+		Text = " ",
+		Method = "󰊕 ",
+		Function = "󰡱 ",
+		Constructor = " ",
+		Field = " ",
+		Variable = " ",
+		Class = " ",
+		Interface = " ",
+		Module = " ",
+		Property = " ",
+		Unit = " ",
+		Value = " ",
+		Enum = " ",
+		Keyword = " ",
+		Snippet = "󰩫 ",
+		Color = " ",
+		File = " ",
+		Reference = "󰈇 ",
+		Folder = " ",
+		EnumMember = " ",
+		Constant = "󰎠 ",
+		Struct = "󰙅 ",
+		Event = " ",
+		Operator = " ",
+		TypeParameter = " ",
+	}
 
 	local sources = {
 		{ name = "nvim_lsp" },
@@ -65,8 +100,6 @@ function config.nvim_cmp()
 		table.insert(sources, { name = "calc" })
 	end
 
-	vim.api.nvim_set_hl(0, "transparentBG", { bg = "NONE", fg = "LightGray" })
-
 	cmp.setup({
 		require("luasnip.loaders.from_vscode").lazy_load(),
 
@@ -83,11 +116,24 @@ function config.nvim_cmp()
 			completeopt = "menu,menuone,preview",
 		},
 
-		formatting = {
-			format = lspkind.cmp_format({
-				maxwidth = 50,
-				ellipsis_char = "..."
+		window = {
+			documentation = cmp.config.window.bordered({
+				border = "rounded",
+				winhighlight = "Search:None"
+			}),
+			completion = cmp.config.window.bordered({
+				border = "rounded",
+				winhiglight = "Search:None"
 			})
+		},
+
+		formatting = {
+			fields = { "kind", "abbr", "menu" },
+			format = function(entry, vim_item)
+				vim_item.kind = cmp_kinds[vim_item.kind] or ""
+				vim_item.menu = source_mapping[entry.source.name] or "[UNK]"
+				return vim_item
+			end,
 		},
 
 		mapping = cmp.mapping({
@@ -111,20 +157,19 @@ function config.nvim_cmp()
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { text = "" } }))
 
-	cmp.setup.cmdline(":", {
+	cmp.setup.cmdline(':', {
 		mapping = cmp.mapping.preset.cmdline(),
-
 		sources = cmp.config.sources({
-			{ name = "path" },
+			{ name = 'path' },
 		}, {
-			{ name = "cmdline_history" },
-			{
-				name = "cmdline",
-				option = {
-					ignore_cmds = { "Man", "!" },
+				{ name = 'cmdline_history' },
+				{
+					name = 'cmdline',
+					option = {
+						ignore_cmds = { 'Man', '!' },
+					},
 				},
-			},
-		}),
+			}),
 	})
 
 	cmp.setup.cmdline("/", {

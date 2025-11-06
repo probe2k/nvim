@@ -26,6 +26,10 @@ local function load_mappings()
 		["<A-Right>"] = "<C-W>>",
 		["<A-Down>"] = "<C-W>+",
 		["<A-Up>"] = "<C-W>-",
+		["]"] = "zc",
+		["["] = "zo",
+		["<leader>]"] = "zM",
+		["<leader>["] = "zR",
 	}
 
 	for name, value in pairs(maps) do

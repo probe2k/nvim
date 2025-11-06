@@ -24,16 +24,7 @@ local treesitter_obj = function()
 			lsp_interop = {
 				enable = true,
 				peek_definition_code = { ["ge"] = "@function.outer", ["gf"] = "@class.outer" },
-			},
-			move = {
-				enable = true,
-				set_jumps = true,
-				goto_next_start = {
-					["]m"] = "@function.outer",
-					["]["] = "@class.outer",
-					["]o"] = "@loop.*",
-				},
-			},
+			}
 		},
 
 		ensure_installed = ts_ensure_installed,

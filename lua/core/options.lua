@@ -37,6 +37,12 @@ local function load_options()
 		laststatus = 3;
 		display = "lastline";
 		list = true;
+		foldmethod = "expr";
+		foldcolumn = "0";
+		foldexpr = "nvim_treesitter#foldexpr()";
+		foldenable = true;
+		foldlevel = 99;
+		foldlevelstart = 99;
 		showbreak = "↪ ";
 		listchars = "tab:  ,nbsp:+,trail:·,extends:→,precedes:←";
 		fillchars = "eob: ";

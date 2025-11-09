@@ -34,4 +34,5 @@ vim.defer_fn(function()
 	if gitrepo then
 		loader("gitsigns.nvim")
 	end
+	loader("lualine.nvim")
 end, lazy_timer + 5)

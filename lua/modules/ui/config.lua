@@ -69,43 +69,40 @@ function config.lualine()
 		options = {
 			theme = {
 				normal = {
-					a = { fg = "#b4dce7", gui = "bold" },
-					b = { fg = "#b4dce7" },
-					c = { fg = "#b4dce7" }
+					a = { bg = "none", gui = "bold" },
+					b = { bg = "none", gui = "bold" },
+					c = { bg = "none", gui = "bold" },
 				},
 				insert = {
-					a = { fg = "#c9e4b8", gui = "bold" },
-					b = { fg = "#b4dce7" },
-					c = { fg = "#b4dce7" }
+					a = { bg = "none", gui = "bold" },
+					b = { bg = "none", gui = "bold" },
+					c = { bg = "none", gui = "bold" },
 				},
 				visual = {
-					a = { fg = "#e8d2b4", gui = "bold" },
-					b = { fg = "#b4dce7" },
-					c = { fg = "#b4dce7" }
+					a = { bg = "none", gui = "bold" },
+					b = { bg = "none", gui = "bold" },
+					c = { bg = "none", gui = "bold" },
 				},
 				replace = {
-					a = { fg = "#e8b4b4", gui = "bold" },
-					b = { fg = "#b4dce7" },
-					c = { fg = "#b4dce7" }
+					a = { bg = "none", gui = "bold" },
+					b = { bg = "none", gui = "bold" },
+					c = { bg = "none", gui = "bold" },
 				},
 				command = {
-					a = { fg = "#d4b4e8", gui = "bold" },
-					b = { fg = "#b4dce7" },
-					c = { fg = "#b4dce7" }
+					a = { bg = "none", gui = "bold" },
+					b = { bg = "none", gui = "bold" },
+					c = { bg = "none", gui = "bold" },
 				},
 				inactive = {
-					a = { fg = "#a0a0a0", gui = "bold" },
-					b = { fg = "#a0a0a0" },
-					c = { fg = "#a0a0a0" }
+					a = { bg = "none", gui = "bold" },
+					b = { bg = "none", gui = "bold" },
+					c = { bg = "none", gui = "bold" },
 				}
 			},
---			component_separators = {left = "│", right = "│"},
+			--   component_separators = {left = "│", right = "│"},
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
-			globalstatus = true,
-			refresh = {
-				statusline = 1000,
-			}
+			globalstatus = true
 		},
 		sections = {
 			lualine_a = {
@@ -117,22 +114,22 @@ function config.lualine()
 							i = "INSERT",
 							v = "VISUAL",
 							V = "V-LINE",
-							[""] = "V-BLOCK",
+							[" "] = "V-BLOCK",
 							c = "COMMAND",
 							s = "SELECT",
 							S = "S-LINE",
-							[""] = "S-BLOCK",
+							[" "] = "S-BLOCK",
 							t = "TERMINAL"
 						}
 						return mode_map[str] or str
 					end,
-					color = { fg = "#c9e4b8" }
+					color = { fg = "#3fcc7d" }
 				}
 			},
 			lualine_b = {
 				{
 					"filename",
-					color = { fg = "#e8d2b4" },
+					color = { fg = "#df8f3f" },
 					symbols = { modified = "  ", readonly = "  ", unnamed = "  " }
 				}
 			},
@@ -151,7 +148,7 @@ function config.lualine()
 						dos = " ",
 						mac = " "
 					},
-					color = { fg = "#b4dce7" }
+					color = { fg = "#9f2f50" }
 				}
 			},
 			lualine_x = {
@@ -192,23 +189,7 @@ function config.lualine()
 					color = { fg = "#a0a0a0" }
 				}
 			}
-		},
---		tabline = {
---			lualine_a = {
---				{
---					"tabs",
---					mode = 2,
---					tabs_color = {
---						active = {fg = "none", bg = "#e8b4b4"},
---						inactive = {fg = "#b4dce7", bg = "none"}
---					},
---					fmt = function(name, context)
---						return string.format(" %s:%s ", context.tabnr, name)
---					end
---				}
---			}
---		},
---		extensions = {"fugitive", "nvim-tree", "toggleterm"}
+		}
 	})
 end
 

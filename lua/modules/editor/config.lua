@@ -140,8 +140,8 @@ function config.nvim_tree()
 						empty_open = "",
 						symlink = "",
 						symlink_open = "",
-						arrow_open = "",
-						arrow_closed = "",
+						arrow_open = "󱞩",
+						arrow_closed = "󱞫",
 					}
 				}
 			},

@@ -18,6 +18,7 @@ local function load_mappings()
 		["<leader>b"] = ":Telescope buffers<CR>",
 		["<leader>g"] = ":Telescope live_grep<CR>",
 		["<leader>s"] = ":Telescope grep_string<CR>",
+		["<leader>v"] = ":Gitsigns blame<CR>",
 		["<C-d>"] = "<C-d>zz",
 		["<C-u>"] = "<C-u>zz",
 		["<C-v>"] = "<C-W><C-v>",

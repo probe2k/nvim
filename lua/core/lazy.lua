@@ -1,5 +1,4 @@
 local uv = vim.loop
-local api = vim.api
 local fn = vim.fn
 
 local helper = require("core.helper")

@@ -9,4 +9,3 @@ return function(ui)
 
 	ui({ "nvim-lualine/lualine.nvim", lazy = true, config = conf.lualine })
 end
-

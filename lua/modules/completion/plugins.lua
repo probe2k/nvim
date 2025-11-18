@@ -39,6 +39,7 @@ return function(comp)
 	comp({
 		"neovim/nvim-lspconfig",
 		config = conf.nvim_lsp,
+		dependencies = { "nvimdev/lspsaga.nvim", lazy = true, config = function() require("lspsaga").setup({}) end },
 		lazy = true
 	})
 end

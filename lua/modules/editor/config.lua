@@ -100,7 +100,7 @@ function config.nvim_tree()
 		view = {
 			adaptive_size = false,
 			side = "right",
-			width = 30,
+			width = 40,
 		},
 		git = {
 			enable = true,

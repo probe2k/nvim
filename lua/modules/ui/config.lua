@@ -40,7 +40,7 @@ function config.starry()
 			"EndOfBuffer", "FloatBorder",
 		},
 		extra_groups = {
-			"NormalFloat", "TelescopeNormal", "TelescopePromptBorder", "TelescopePreviewBorder", "TelescopeResultsBorder", "NvimTreeNormal", "ColorColumn"
+			"NormalFloat", "TelescopeNormal", "TelescopePromptBorder", "TelescopePreviewBorder", "TelescopeResultsBorder", "NvimTreeNormal", "ColorColumn", "WinBar", "WinBarNC"
 		},
 		exclude_groups = {},
 		on_clear = function() end,
@@ -114,11 +114,11 @@ function config.lualine()
 							i = "INSERT",
 							v = "VISUAL",
 							V = "V-LINE",
-							[" "] = "V-BLOCK",
+							[""] = "V-BLOCK",
 							c = "COMMAND",
 							s = "SELECT",
 							S = "S-LINE",
-							[" "] = "S-BLOCK",
+							[""] = "S-BLOCK",
 							t = "TERMINAL"
 						}
 						return mode_map[str] or str
@@ -149,6 +149,28 @@ function config.lualine()
 						mac = " "
 					},
 					color = { fg = "#9f2f50" }
+				},
+				{
+					function()
+						return "%="
+					end
+				},
+				{
+					function()
+						local msg = "LSP Inactive"
+						local buf_ft = vim.api.nvim_get_option_value("filetype", {})
+						local clients = vim.lsp.get_clients { bufnr = 0 }
+						if next(clients) == nil then
+							return msg
+						end
+
+						for _, client in ipairs(clients) do
+							local filetypes = client.config.filetypes
+							if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+								return client.name
+							end
+						end
+					end
 				}
 			},
 			lualine_x = {

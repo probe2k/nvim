@@ -141,23 +141,13 @@ function config.lualine()
 					color = { fg = "#ffffff" }
 				},
 				{
-					"fileformat",
-					icons_enabled = true,
-					symbols = {
-						unix = " ",
-						dos = " ",
-						mac = " "
-					},
-					color = { fg = "#9f2f50" }
-				},
-				{
 					function()
 						return "%="
 					end
 				},
 				{
 					function()
-						local msg = "LSP Inactive"
+						local msg = "Inactive"
 						local buf_ft = vim.api.nvim_get_option_value("filetype", {})
 						local clients = vim.lsp.get_clients { bufnr = 0 }
 						if next(clients) == nil then
@@ -170,10 +160,21 @@ function config.lualine()
 								return client.name
 							end
 						end
-					end
+					end,
+					icon = "  LSP:"
 				}
 			},
 			lualine_x = {
+				{
+					"fileformat",
+					icons_enabled = true,
+					symbols = {
+						unix = " ",
+						dos = " ",
+						mac = " "
+					},
+					color = { fg = "#9f2f50" }
+				},
 				{
 					"diff",
 					symbols = {

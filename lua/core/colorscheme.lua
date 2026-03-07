@@ -1,4 +1,4 @@
-local loading_theme = "starry"
+local loading_theme = "vague"
 
 local function load_colorscheme(theme)
 	if not theme then

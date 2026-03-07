@@ -30,80 +30,68 @@ function config.noice()
 	})
 end
 
-function config.starry()
-	require("transparent").setup({
-		groups = {
-			"NormalNC", "Comment", "Constant", "Special", "Identifier",
-			"Statement", "PreProc", "Type", "Underlined", "Todo", "String", "Function",
-			"Conditional", "Repeat", "Operator", "Structure", "LineNr", "NonText",
-			"SignColumn", "CursorLine", "CursorLineNr", "StatusLine", "StatusLineNC",
-			"EndOfBuffer", "FloatBorder",
-		},
-		extra_groups = {
-			"NormalFloat", "TelescopeNormal", "TelescopePromptBorder", "TelescopePreviewBorder", "TelescopeResultsBorder", "NvimTreeNormal", "ColorColumn", "WinBar", "WinBarNC"
-		},
-		exclude_groups = {},
-		on_clear = function() end,
+function config.vague()
+	require("vague").setup({
+		bold = true,
+		italic = true,
+		colors = {
+			bg = "#000000"
+		}
 	})
-
-	require("starry").setup({
-		border = false,
-		italics = {
-			comments = true,
-			keywords = false,
-			functions = true,
-			variables = false,
-			strings = false,
-		},
-		contrast = { enable = true, terminal = true },
-		disable = { background = true, term_colors = false }
-	})
-
-	vim.cmd([[ TransparentEnable ]])
-	vim.cmd([[ colorscheme earlysummer ]])
+	vim.cmd([[ colorscheme vague ]])
 	vim.api.nvim_set_hl(0, "Normal", { fg = "#8fA1A6", bg = "NONE" })
 end
+
+--function config.starry()
+--	require("transparent").setup({
+--		groups = {
+--			"NormalNC", "Comment", "Constant", "Special", "Identifier",
+--			"Statement", "PreProc", "Type", "Underlined", "Todo", "String", "Function",
+--			"Conditional", "Repeat", "Operator", "Structure", "LineNr", "NonText",
+--			"SignColumn", "CursorLine", "CursorLineNr", "StatusLine", "StatusLineNC",
+--			"EndOfBuffer", "FloatBorder",
+--		},
+--		extra_groups = {
+--			"NormalFloat", "TelescopeNormal", "TelescopePromptBorder", "TelescopePreviewBorder", "TelescopeResultsBorder", "NvimTreeNormal", "ColorColumn", "WinBar", "WinBarNC"
+--		},
+--		exclude_groups = {},
+--		on_clear = function() end,
+--	})
+--
+--	require("starry").setup({
+--		border = false,
+--		italics = {
+--			comments = true,
+--			keywords = false,
+--			functions = true,
+--			variables = false,
+--			strings = false,
+--		},
+--		contrast = { enable = true, terminal = true },
+--		disable = { background = true, term_colors = false }
+--	})
+--
+--	vim.cmd([[ TransparentEnable ]])
+--	vim.cmd([[ colorscheme earlysummer ]])
+--	vim.api.nvim_set_hl(0, "Normal", { fg = "#8fA1A6", bg = "NONE" })
+--end
 
 function config.lualine()
 	require("lualine").setup({
 		options = {
 			theme = {
-				normal = {
-					a = { bg = "none", gui = "bold" },
-					b = { bg = "none", gui = "bold" },
-					c = { bg = "none", gui = "bold" },
-				},
-				insert = {
-					a = { bg = "none", gui = "bold" },
-					b = { bg = "none", gui = "bold" },
-					c = { bg = "none", gui = "bold" },
-				},
-				visual = {
-					a = { bg = "none", gui = "bold" },
-					b = { bg = "none", gui = "bold" },
-					c = { bg = "none", gui = "bold" },
-				},
-				replace = {
-					a = { bg = "none", gui = "bold" },
-					b = { bg = "none", gui = "bold" },
-					c = { bg = "none", gui = "bold" },
-				},
-				command = {
-					a = { bg = "none", gui = "bold" },
-					b = { bg = "none", gui = "bold" },
-					c = { bg = "none", gui = "bold" },
-				},
-				inactive = {
-					a = { bg = "none", gui = "bold" },
-					b = { bg = "none", gui = "bold" },
-					c = { bg = "none", gui = "bold" },
-				}
+				normal = { a = { bg = "none", gui = "bold" }, b = { bg = "none", gui = "bold" }, c = { bg = "none", gui = "bold" } },
+				insert = { a = { bg = "none", gui = "bold" }, b = { bg = "none", gui = "bold" }, c = { bg = "none", gui = "bold" } },
+				visual = { a = { bg = "none", gui = "bold" }, b = { bg = "none", gui = "bold" }, c = { bg = "none", gui = "bold" } },
+				replace = { a = { bg = "none", gui = "bold" }, b = { bg = "none", gui = "bold" }, c = { bg = "none", gui = "bold" } },
+				command = { a = { bg = "none", gui = "bold" }, b = { bg = "none", gui = "bold" }, c = { bg = "none", gui = "bold" } },
+				inactive = { a = { bg = "none", gui = "bold" }, b = { bg = "none", gui = "bold" }, c = { bg = "none", gui = "bold" } }
 			},
-			--   component_separators = {left = "│", right = "│"},
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			globalstatus = true
 		},
+
 		sections = {
 			lualine_a = {
 				{
@@ -123,28 +111,26 @@ function config.lualine()
 						}
 						return mode_map[str] or str
 					end,
-					color = { fg = "#3fcc7d" }
+					color = { fg = "#7aa2b8" }
 				}
 			},
+
 			lualine_b = {
 				{
 					"filename",
-					color = { fg = "#df8f3f" },
+					color = { fg = "#d8a657" },
 					symbols = { modified = "  ", readonly = "  ", unnamed = "  " }
 				}
 			},
+
 			lualine_c = {
 				{
 					"filetype",
 					colored = true,
 					icon_only = true,
-					color = { fg = "#ffffff" }
+					color = { fg = "#e5e9f0" }
 				},
-				{
-					function()
-						return "%="
-					end
-				},
+				{ function() return "%=" end },
 				{
 					function()
 						local msg = "Inactive"
@@ -161,19 +147,17 @@ function config.lualine()
 							end
 						end
 					end,
-					icon = "  LSP:"
+					icon = "  LSP:",
+					color = { fg = "#8fa1a6" }
 				}
 			},
+
 			lualine_x = {
 				{
 					"fileformat",
 					icons_enabled = true,
-					symbols = {
-						unix = " ",
-						dos = " ",
-						mac = " "
-					},
-					color = { fg = "#9f2f50" }
+					symbols = { unix = " ", dos = " ", mac = " " },
+					color = { fg = "#a88fb8" }
 				},
 				{
 					"diff",
@@ -182,23 +166,25 @@ function config.lualine()
 						modified = " ",
 						removed = " "
 					},
-					color_added = "#c9e4b8",
-					color_modified = "#e8d2b4",
-					color_removed = "#e8b4b4"
+					color_added = "#9bbf9b",
+					color_modified = "#d8bb84",
+					color_removed = "#d27d7d"
 				}
 			},
+
 			lualine_y = {
 				{
 					"progress",
-					color = { fg = "#e8d2b4" }
+					color = { fg = "#c7a96b" }
 				}
 			}
 		},
+
 		inactive_sections = {
 			lualine_a = {
 				{
 					"filename",
-					color = { fg = "#a0a0a0" },
+					color = { fg = "#7c8599" },
 					symbols = { modified = "  ", readonly = "  " }
 				}
 			},
@@ -209,7 +195,7 @@ function config.lualine()
 			lualine_z = {
 				{
 					"filetype",
-					color = { fg = "#a0a0a0" }
+					color = { fg = "#7c8599" }
 				}
 			}
 		}

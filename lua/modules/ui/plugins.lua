@@ -5,14 +5,9 @@ return function(ui)
 
 	ui({ "xiyaowong/transparent.nvim", cmd = { "TransparentEnable", "TransparentDisable", "TransparentToggle" }, lazy = true, name = "transparent" })
 
-	ui({
-		"vague-theme/vague.nvim",
-		lazy = true,
-		name = "vague",
-		config = conf.vague
-	})
+	ui({ "vague-theme/vague.nvim", lazy = true, name = "vague", config = conf.vague })
 
---	ui({ "ray-x/starry.nvim", lazy = true, name = "starry", config = conf.starry })
+	--	ui({ "ray-x/starry.nvim", lazy = true, name = "starry", config = conf.starry })
 
 	ui({ "nvim-lualine/lualine.nvim", lazy = true, config = conf.lualine })
 end

@@ -33,7 +33,7 @@ end
 function config.starry()
 	require("transparent").setup({
 		groups = {
-			"Normal", "NormalNC", "Comment", "Constant", "Special", "Identifier",
+			"NormalNC", "Comment", "Constant", "Special", "Identifier",
 			"Statement", "PreProc", "Type", "Underlined", "Todo", "String", "Function",
 			"Conditional", "Repeat", "Operator", "Structure", "LineNr", "NonText",
 			"SignColumn", "CursorLine", "CursorLineNr", "StatusLine", "StatusLineNC",
@@ -56,12 +56,12 @@ function config.starry()
 			strings = false,
 		},
 		contrast = { enable = true, terminal = true },
-		disable = { background = true, term_colors = false },
-		style = { name = "earlysummer" },
+		disable = { background = true, term_colors = false }
 	})
 
 	vim.cmd([[ TransparentEnable ]])
-	vim.cmd([[ colorscheme moonlight ]])
+	vim.cmd([[ colorscheme earlysummer ]])
+	vim.api.nvim_set_hl(0, "Normal", { fg = "#8fA1A6", bg = "NONE" })
 end
 
 function config.lualine()

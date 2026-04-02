@@ -1,4 +1,4 @@
-local M = { log_path = vim.lsp.get_log_path() }
+local M = { log_path = vim.lsp.log.get_filename() }
 
 function M.loader(modules)
 	local lazy = require("lazy")

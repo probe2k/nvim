@@ -30,51 +30,51 @@ function config.noice()
 	})
 end
 
-function config.vague()
-	require("vague").setup({
-		bold = true,
-		italic = true,
-		colors = {
-			bg = "#000000"
-		}
-	})
-	vim.cmd([[ colorscheme vague ]])
-	vim.api.nvim_set_hl(0, "Normal", { fg = "#8fA1A6", bg = "NONE" })
-end
-
---function config.starry()
---	require("transparent").setup({
---		groups = {
---			"NormalNC", "Comment", "Constant", "Special", "Identifier",
---			"Statement", "PreProc", "Type", "Underlined", "Todo", "String", "Function",
---			"Conditional", "Repeat", "Operator", "Structure", "LineNr", "NonText",
---			"SignColumn", "CursorLine", "CursorLineNr", "StatusLine", "StatusLineNC",
---			"EndOfBuffer", "FloatBorder",
---		},
---		extra_groups = {
---			"NormalFloat", "TelescopeNormal", "TelescopePromptBorder", "TelescopePreviewBorder", "TelescopeResultsBorder", "NvimTreeNormal", "ColorColumn", "WinBar", "WinBarNC"
---		},
---		exclude_groups = {},
---		on_clear = function() end,
+--function config.vague()
+--	require("vague").setup({
+--		bold = true,
+--		italic = true,
+--		colors = {
+--			bg = "#000000"
+--		}
 --	})
---
---	require("starry").setup({
---		border = false,
---		italics = {
---			comments = true,
---			keywords = false,
---			functions = true,
---			variables = false,
---			strings = false,
---		},
---		contrast = { enable = true, terminal = true },
---		disable = { background = true, term_colors = false }
---	})
---
---	vim.cmd([[ TransparentEnable ]])
---	vim.cmd([[ colorscheme earlysummer ]])
+--	vim.cmd([[ colorscheme vague ]])
 --	vim.api.nvim_set_hl(0, "Normal", { fg = "#8fA1A6", bg = "NONE" })
 --end
+
+function config.starry()
+	require("transparent").setup({
+		groups = {
+			"NormalNC", "Comment", "Constant", "Special", "Identifier",
+			"Statement", "PreProc", "Type", "Underlined", "Todo", "String", "Function",
+			"Conditional", "Repeat", "Operator", "Structure", "LineNr", "NonText",
+			"SignColumn", "CursorLine", "CursorLineNr", "StatusLine", "StatusLineNC",
+			"EndOfBuffer", "FloatBorder",
+		},
+		extra_groups = {
+			"NormalFloat", "TelescopeNormal", "TelescopePromptBorder", "TelescopePreviewBorder", "TelescopeResultsBorder", "NvimTreeNormal", "ColorColumn", "WinBar", "WinBarNC"
+		},
+		exclude_groups = {},
+		on_clear = function() end,
+	})
+
+	require("starry").setup({
+		border = false,
+		italics = {
+			comments = true,
+			keywords = false,
+			functions = true,
+			variables = false,
+			strings = false,
+		},
+		contrast = { enable = true, terminal = true },
+		disable = { background = true, term_colors = false }
+	})
+
+	vim.cmd([[ TransparentEnable ]])
+	vim.cmd([[ colorscheme earlysummer ]])
+	vim.api.nvim_set_hl(0, "Normal", { fg = "#C0CAF5", bg = "NONE" })
+end
 
 function config.lualine()
 	require("lualine").setup({

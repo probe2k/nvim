@@ -177,6 +177,21 @@ function config.lualine()
 					"progress",
 					color = { fg = "#c7a96b" }
 				}
+			},
+
+			lualine_z = {
+				{
+					"location",
+					color = { fg = "#c7a96b" }
+				},
+				{
+					function()
+						return string.rep(" ", math.floor(vim.o.columns * 0.1))
+					end,
+					color = { fg = "none", bg = "none" },
+					separator = { left = "", right = "" },
+					padding = 0
+				}
 			}
 		},
 
